@@ -19,4 +19,24 @@ spec:
         image: anurag117/nhsrc-backend:latest
         ports:
         - containerPort: 8081
+        env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/opt/hallbooking_backend/config/application.properties
 
+        volumeMounts:
+            - name: config
+              mountPath: /opt/hallbooking_backend/config/application.properties
+              subPath: application.properties
+        
+        resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+      volumes:
+        - name: config
+          secret:
+            secretName: backend-config
