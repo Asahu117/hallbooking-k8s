@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: hallbooking
+data:
+  application.properties: |
+    # this will be auto-managed OR replaced manually
